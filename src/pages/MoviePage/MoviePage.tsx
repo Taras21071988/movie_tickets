@@ -4,7 +4,7 @@ import style from './MoviePage.module.scss'
 export const MoviePage=()=>{
     return(
         <div className={style.moviePage}>
-            <Title center></Title>
+            <Title>yi</Title>
         </div>
     )
 }

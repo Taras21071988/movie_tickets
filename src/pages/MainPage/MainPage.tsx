@@ -6,7 +6,7 @@ export const MainPage = () => {
   return (
     <div className={style.MainPage}>
       <Title center>Выберите фильм</Title>
-      <MovieList className={style.movieList}/>
+      <MovieList className={style.movieList} />
     </div>
   );
 };
