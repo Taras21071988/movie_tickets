@@ -1,0 +1,6 @@
+.movieList {
+  display: grid;
+  gap: var(--margin);
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  justify-items: center;
+}
