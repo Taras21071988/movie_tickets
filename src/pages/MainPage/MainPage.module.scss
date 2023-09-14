@@ -1,4 +1,6 @@
 .MainPage {
   display: grid;
-  justify-items: center;
+}
+.movieList {
+  margin-top: var(--margin);
 }

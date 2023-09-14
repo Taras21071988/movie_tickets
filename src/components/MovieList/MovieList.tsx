@@ -1,6 +1,7 @@
 import { IMovieCard } from "../../types";
 import { MovieCard } from "../MovieCard";
 import style from "./MovieList.module.scss";
+import classNames from "classnames";
 
 const movies: IMovieCard[] = [
   {
@@ -22,14 +23,18 @@ const movies: IMovieCard[] = [
     genre: "Приключения",
   },
 ];
-export const MovieList = () => {
+
+interface MovieListProps {
+  className?: string;
+}
+
+export const MovieList = ({ className  }: MovieListProps) => {
+  const classes = classNames(style.movieList,className);
   function renderList(data: IMovieCard[]) {
-   return data.map((movieData) => <MovieCard key={movieData.id} data={movieData} />);
+    return data.map((movieData) => (
+      <MovieCard key={movieData.id} data={movieData} />
+    ));
   }
 
-  return (
-    <div className={style.movieList}>
-      {renderList(movies)}
-    </div>
-  );
+  return <div className={classes}>{renderList(movies)}</div>;
 };

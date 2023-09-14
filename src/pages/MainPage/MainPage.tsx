@@ -5,8 +5,8 @@ import style from "./MainPage.module.scss";
 export const MainPage = () => {
   return (
     <div className={style.MainPage}>
-      <Title>Выберите фильм</Title>
-      <MovieList />
+      <Title center>Выберите фильм</Title>
+      <MovieList className={style.movieList}/>
     </div>
   );
 };

@@ -1,0 +1,2 @@
+export { MoviePage } from "./MoviePage";
+
