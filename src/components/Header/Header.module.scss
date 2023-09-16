@@ -1,8 +1,15 @@
-.header{
-    display: grid;
-    grid-template-columns: 180px 1fr;
-
-}
-.link{
-    padding: 10px;
+.header {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  justify-items: center;
+  .backBtn {
+    font-size: var(--btnSize);
+    color: var(--light);
+    background-color: var(--secondary);
+    padding: 8px 10px;
+    border-radius: 4px;
+    transition: filter 0.3s;
+    
+  }
 }

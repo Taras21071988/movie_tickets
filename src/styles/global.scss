@@ -1,7 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700&display=swap");
-
-@import "./variables";
-
 *,
 *::after,
 *::before {
@@ -14,7 +10,10 @@ body {
   display: grid;
   justify-items: center;
 }
-a{
+a {
   text-decoration: none;
   color: var(--linkColor);
+}
+.hover:hover{
+  filter: brightness(130%);
 }
