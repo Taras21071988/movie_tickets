@@ -8,6 +8,7 @@
   overflow: hidden;
   border-radius: var(--radius);
   width: var(--imgWidth);
+  color: var(--default);
   .imgBlock {
     height: calc(var(--imgWidth) / 1.5);
     margin-bottom: 12px;
