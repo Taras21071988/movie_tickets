@@ -4,7 +4,7 @@
 }
 
 .movieCard {
-  box-shadow: 4px 8px 16px rgba($color: #000000, $alpha: 0.3);
+  box-shadow: var(--shadow);
   overflow: hidden;
   border-radius: var(--radius);
   width: var(--imgWidth);

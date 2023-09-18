@@ -11,8 +11,9 @@ export interface IMovieCard {
 export interface Movie extends IMovieCard {
   description: string;
   times: string[];
-  length: number;
+  duration: number;
   country: Country;
   year: number;
   actors: Actors[];
+  premier: string;
 }
