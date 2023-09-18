@@ -1,2 +1,3 @@
-export type { IMovieCard } from "./movie";
-
+export * from "./actors";
+export * from "./country";
+export * from "./movie";

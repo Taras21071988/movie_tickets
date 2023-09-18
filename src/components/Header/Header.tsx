@@ -5,15 +5,21 @@ import classNames from "classnames";
 
 interface HeaderProps {
   title: string;
+  className?: string;
 }
 
-export const Header = ({ title }: HeaderProps) => {
+export const Header = (props: HeaderProps) => {
+  const { title, className } = props;
+  const classes = classNames(style.header,className)
+
   return (
-    <div className={style.header}>
+    <div className={classes}>
       <Link to="/" className={classNames("hover", style.backBtn)}>
         Вернутся на главную
       </Link>
-      <Title center>{title}</Title>
+      <Title center className={style.title}>
+        {title}
+      </Title>
     </div>
   );
 };

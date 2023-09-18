@@ -1,8 +1,11 @@
 .header {
+  --firstColWidth: 180px;
+
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: var(--firstColWidth) 1fr;
   align-items: center;
   justify-items: center;
+  gap: var(--margin);
   .backBtn {
     font-size: var(--btnSize);
     color: var(--light);
@@ -10,6 +13,8 @@
     padding: 8px 10px;
     border-radius: 4px;
     transition: filter 0.3s;
-    
+  }
+  .title {
+    padding-right: calc(var(--firstColWidth) + var(--margin));
   }
 }
