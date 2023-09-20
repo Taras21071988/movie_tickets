@@ -1,1 +1,1 @@
-export type Country = "США" | "Россия" | "Германия";
+export type Country = "США" | "Украина" | "Германия";

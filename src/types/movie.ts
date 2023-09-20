@@ -1,5 +1,6 @@
 import { Actors } from "./actors";
 import { Country } from "./country";
+import { Times } from "./times";
 
 export interface IMovieCard {
   id: number;
@@ -10,7 +11,7 @@ export interface IMovieCard {
 
 export interface Movie extends IMovieCard {
   description: string;
-  times: string[];
+  times: Times[] ;
   duration: number;
   country: Country;
   year: number;
