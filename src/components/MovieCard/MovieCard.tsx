@@ -17,15 +17,7 @@ export const MovieCard = (props: MovieCardProps) => {
     );
   };
   return (
-    // <div>
-    //   <Link to={`/movie/${props.data.title}`}>
-    //     <img src={props.data.img} alt={props.data.title} className={style.img} />
-    //   </Link>
-    //   <div className={style.title}>
-    //     <Link to={`/movie/${props.data.title}`}>{props.data.title}</Link>
-    //   </div>
-    //   <div className={style.genre}>{props.data.genre}</div>
-    // </div>
+
     <div className={style.wrap}>
       <button onClick={onClick}>Изменить</button>
       <Link to="/movie" className={style.movieCard}>
