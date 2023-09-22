@@ -6,8 +6,14 @@ const moviesApi = rtkApi.injectEndpoints({
     getAllMovies: build.query<Movie[], void>({
       query: () => "movies",
     }),
+    getMovieById: build.query<Movie, string>({
+      query: (id) => `movies?id_like=${id}`,
+      transformResponse: (data: Movie[]): Movie => {
+        return data[0];
+      },
+    }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetAllMoviesQuery } = moviesApi;
+export const { useGetAllMoviesQuery, useGetMovieByIdQuery } = moviesApi;

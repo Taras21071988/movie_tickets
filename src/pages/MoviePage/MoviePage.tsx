@@ -2,15 +2,12 @@ import classNames from "classnames";
 import { Header } from "../../components/Header";
 import style from "./MoviePage.module.scss";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import { Title } from "../../components/Title";
+import { useGetMovieByIdQuery } from "../../api";
 
 export const MoviePage = () => {
   const params = useParams();
-  const data = useSelector((state: RootState) => state.movies.data).find(
-    (movie) => movie.id === +params.id!
-  );
+  const { data, isLoading } = useGetMovieByIdQuery(params.id!);
 
   const renderSessionTimes = (times: string[]) => {
     return times.map((time, index) => {
@@ -22,7 +19,8 @@ export const MoviePage = () => {
       );
     });
   };
-  if(!data)  return <Title center>Фильм не найден</Title>;
+  if (isLoading) return <Title center>Loading...</Title>;
+  if (!data) return <Title center>Фильм не найден</Title>;
 
   return (
     <div className={style.moviePage}>
