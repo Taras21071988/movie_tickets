@@ -21,7 +21,7 @@ const initialState: MoviesState = {
         "Роберт Де Ниро",
       ],
       country: "Украина",
-      year: 2017,
+      year: 2016,
       premier: "21 ноября 2023",
       duration: 100,
       times: ["10:00", "11:30", "15:30", "19:00", "23:00"],
@@ -59,7 +59,7 @@ const initialState: MoviesState = {
         "Роберт Де Ниро",
       ],
       country: "Украина",
-      year: 2017,
+      year: 2018,
       premier: "21 ноября 2023",
       duration: 100,
       times: ["9:00", "12:00", "16:30", "18:30", "23:00", "23:30"],
@@ -70,23 +70,7 @@ const initialState: MoviesState = {
 const moviesSlice = createSlice({
   name: "moviesSlice",
   initialState,
-  reducers: {
-    setMovieTitle: (
-      state,
-      action: PayloadAction<{ id: number; title: string }>
-    ) => {
-      const { id, title } = action.payload;
-      const updatedMovies = state.data.map((movie) => {
-        if (movie.id === id) {
-          movie.title = title;
-          return movie;
-        }
-        return movie;
-      });
-      state.data = updatedMovies;
-    },
-  },
+  reducers: {},
 });
 
-export const { setMovieTitle } = moviesSlice.actions;
 export const moviesReducer = moviesSlice.reducer;

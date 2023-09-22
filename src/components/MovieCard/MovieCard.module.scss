@@ -2,10 +2,7 @@
   --imgWidth: 300px;
   --radius: 10px;
 }
-.wrap {
-  display: grid;
-  gap: var(--margin);
-}
+
 .movieCard {
   box-shadow: var(--shadow);
   overflow: hidden;
