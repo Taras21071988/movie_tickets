@@ -1,23 +1,26 @@
-import { RootState } from "../../store";
-import { IMovieCard } from "../../types";
+import { useGetAllMoviesQuery } from "../../api";
+import { Movie } from "../../types";
 import { MovieCard } from "../MovieCard";
 import style from "./MovieList.module.scss";
 import classNames from "classnames";
-import { useSelector } from "react-redux";
 
 interface MovieListProps {
   className?: string;
 }
 
 export const MovieList = ({ className }: MovieListProps) => {
-  const classes = classNames(style.movieList, className);
-  const{data} = useSelector((state:RootState)=>state.movies);
+  const { isLoading, error, data } = useGetAllMoviesQuery();
 
-  function renderList(data: IMovieCard[]) {
+  const classes = classNames(style.movieList, className);
+
+  function renderList(data: Movie[]) {
     return data.map((movieData) => (
       <MovieCard key={movieData.id} data={movieData} />
     ));
   }
+  if (isLoading) return <h1>Loading....</h1>;
+  if (!data) return <h1>Нет данных</h1>;
+  if (error) return <h1>Произошла ошибка при загрузке</h1>;
 
   return <div className={classes}>{renderList(data)}</div>;
 };
