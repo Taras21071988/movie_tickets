@@ -8,7 +8,7 @@ const moviesApi = rtkApi.injectEndpoints({
     }),
     getMovieById: build.query<Movie, string>({
       query: (id) => `movies?id_like=${id}`,
-      transformResponse: (data: Movie[]): Movie => {
+      transformResponse: (data: Movie[]) => {
         return data[0];
       },
     }),
