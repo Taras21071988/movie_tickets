@@ -4,6 +4,7 @@ import style from "./MoviePage.module.scss";
 import { useParams } from "react-router-dom";
 import { Title } from "../../components/Title";
 import { useGetMovieByIdQuery } from "../../api";
+import { SeatsSelect } from "../../components/SeatsSelect";
 
 export const MoviePage = () => {
   const params = useParams();
@@ -52,6 +53,7 @@ export const MoviePage = () => {
             <div className={style.sessionTimesList}>
               {renderSessionTimes(data.times)}
             </div>
+            <SeatsSelect/>
           </div>
         </div>
       </div>

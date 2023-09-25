@@ -1,0 +1,15 @@
+.seatsSelect {
+  display: grid;
+  border: 1px solid red;
+  .display {
+    position: relative;
+    padding-top: 50px;
+    i {
+      font-size: 200px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
