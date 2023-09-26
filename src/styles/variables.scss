@@ -4,13 +4,21 @@
   --linkColor: #035063;
   --default: #333;
   --light: white;
-  --accent:#00c7bb;
-  //Sizes
+  --accent: #00c7bb;
 
+  --statusAvailable: var(--accent);
+  --statusBusy: #ff4141;
+  --statusSelected: #121212;
+  //Sizes
   --margin: 16px;
 
   //font-size
   --btnSize: 13px;
+
   //box-shadow
   --shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+
+  //Seats map
+  --seatGap: 12px;
+  --seatSize: 24px;
 }

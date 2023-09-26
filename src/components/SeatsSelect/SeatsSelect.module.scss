@@ -1,8 +1,6 @@
 .seatsSelect {
-  --gap: 16px;
-  --size: 24px;
   display: grid;
-  gap: calc(var(--gap) * 2);
+  gap: calc(var(--seatGap) * 2.8);
   justify-items: center;
 
   .display {
@@ -31,21 +29,49 @@
 .place {
   display: grid;
   grid-template-columns: 30px 1fr;
-  padding-right: calc(var(--size) + calc(var(--gap) / 2));
-  gap: calc(var(--gap) / 2);
+  padding-right: calc(var(--seatSize) + calc(var(--seatGap) / 2));
+  gap: calc(var(--seatGap) / 2);
 }
 .rows,
 .seats {
   display: grid;
-  gap: var(--gap);
-  grid-auto-rows: var(--size);
+  gap: var(--seatGap);
+  grid-auto-rows: var(--seatSize);
+}
+.rows {
+  font-size: calc(var(--seatSize) / 2);
+  font-weight: 700;
 }
 .row {
   display: grid;
-  align-items: center;
+  align-items: end;
   justify-items: center;
 }
 .seats {
-  font-size: var(--size);
-  grid-template-columns: repeat(9, var(--size));
+  font-size: var(--seatSize);
+  grid-template-columns: repeat(9, var(--seatSize));
+}
+.info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--seatGap);
+  justify-items: center;
+  .infoItem {
+    display: flex;
+    gap: calc(var(--seatGap) / 2);
+    align-items: center;
+    font-weight: 600;
+    i {
+      font-size: 12px;
+    }
+  }
+}
+.availabel {
+  color: var(--statusAvailable);
+}
+.busy {
+  color: var(--statusBusy);
+}
+.selected {
+  color: var(--statusSelected);
 }

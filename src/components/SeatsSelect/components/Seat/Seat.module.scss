@@ -1,0 +1,27 @@
+.seat {
+  position: relative;
+  color: var(--accent);
+  cursor: pointer;
+  i {
+    text-shadow: 0 1px 4px rgba($color: #000000, $alpha: 0.3);
+  }
+  .seatNum {
+    position: absolute;
+    color: var(--light);
+    top: 26%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: calc(var(--seatSize) / 2.5);
+    font-weight: 600;
+    pointer-events: none;
+  }
+}
+.availabel {
+  color: var(--statusAvailable);
+}
+.busy {
+  color: var(--statusBusy);
+}
+.selected {
+  color: var(--statusSelected);
+}
