@@ -7,18 +7,22 @@ interface SeatProps {
   data: {
     id: number;
     num: number;
-    status: string //"available" | "busy" | "selected";
+    status: string; //"available" | "busy" | "selected";
   };
 }
 
 export const Seat = ({ data }: SeatProps) => {
-  const { id, status, num } = data;
+  const { id, status: initStatus, num } = data;
+  const [status, setStatus] = useState(initStatus);
   const classes = classNames(style.seat, style[status]);
-  const []=useState()
-  const onClick = ()=>{
 
-  }
-   
+  const onClick = () => {
+    if (initStatus !== "busy") {
+      const newStatus = status === "available" ? "selected" : "available";
+      setStatus(newStatus);
+    }
+  };
+
   return (
     <div className={classes} onClick={onClick}>
       <i className="ic-seat" />
