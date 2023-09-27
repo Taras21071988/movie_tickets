@@ -3,8 +3,8 @@ import style from "./SeatsSelect.module.scss";
 import { Seat } from "./components/Seat";
 
 export const SeatsSelect = () => {
-  const colm = 9;
-  const row = 7;
+  // const colm = 9;
+  // const row = 7;
   return (
     <div className={style.seatsSelect}>
       <div className={style.display}>
@@ -14,7 +14,7 @@ export const SeatsSelect = () => {
 
       <div className={style.place}>
         <div className={style.rows}>
-          {Array(row)
+          {Array(7)
             .fill(0)
             .map((item, i) => (
               <div key={`${i}-${Date.now()}`} className={style.row}>
@@ -23,7 +23,7 @@ export const SeatsSelect = () => {
             ))}
         </div>
         <div className={style.seats}>
-          {Array(row * colm)
+          {Array(63)
             .fill(0)
             .map((item, i) => {
               const classes = classNames("ic-seat", {
@@ -36,9 +36,9 @@ export const SeatsSelect = () => {
                 num: i + 1,
                 status:
                   i !== 3 && i !== 5
-                    ? "available"
+                    ? "availabel"
                     : i === 3
-                    ? "busi"
+                    ? "busy"
                     : "selected",
               };
               return (
