@@ -34,14 +34,13 @@ export const SeatsSelect = () => {
               const data = {
                 id: i,
                 num: i + 1,
-                status:
-                  i !== 3 && i !== 5
-                    ? "availabel"
-                    : i === 3
-                    ? "busy"
-                    : "selected",
+                status: i !== 3 ? "availabel" : "busy",
               };
-              return (
+
+              const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
+              return emptyCell.includes(i) ? (
+                <div />
+              ) : (
                 <Seat
                   key={`${i}-${Date.now()}`}
                   className={classes}

@@ -1,13 +1,15 @@
 import classNames from "classnames";
 import style from "./Seat.module.scss";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addSeat, deleteSeat } from "../../../../slices";
 
 interface SeatProps {
   className: string;
   data: {
-    id: number;
-    num: number;
-    status: string; //"available" | "busy" | "selected";
+    id: number
+    num: number
+    status: string //"available" | "busy" | "selected";
   };
 }
 
@@ -15,15 +17,19 @@ export const Seat = ({ data }: SeatProps) => {
   const { id, status: initStatus, num } = data;
   const [status, setStatus] = useState(initStatus);
   const classes = classNames(style.seat, style[status]);
+  const dispatch = useDispatch();
 
   const onClick = () => {
     if (initStatus !== "busy") {
-      const newStatus = status === "available" ? "selected" : "available";
+      const isSelected = status === "available";
+      const newStatus = isSelected ? "selected" : "available";
       setStatus(newStatus);
-      onChange({
-        id,
-        isSelected: status === "available",
-      });
+
+      if (isSelected) {
+        dispatch(addSeat(id + 1));
+      } else {
+        dispatch(deleteSeat(id + 1));
+      }
     }
   };
 
