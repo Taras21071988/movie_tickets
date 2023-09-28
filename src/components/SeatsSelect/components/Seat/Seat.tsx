@@ -20,6 +20,10 @@ export const Seat = ({ data }: SeatProps) => {
     if (initStatus !== "busy") {
       const newStatus = status === "available" ? "selected" : "available";
       setStatus(newStatus);
+      onChange({
+        id,
+        isSelected: status === "available",
+      });
     }
   };
 
