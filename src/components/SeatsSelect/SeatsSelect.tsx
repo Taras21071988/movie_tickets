@@ -3,8 +3,11 @@ import style from "./SeatsSelect.module.scss";
 import { Seat } from "./components/Seat";
 
 export const SeatsSelect = () => {
-  // const colm = 9;
-  // const row = 7;
+  let seatId = 1;
+  let resetIdx = 0;
+  let resetNum = [4, 5, 6];
+  const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
+
   return (
     <div className={style.seatsSelect}>
       <div className={style.display}>
@@ -26,27 +29,34 @@ export const SeatsSelect = () => {
           {Array(63)
             .fill(0)
             .map((item, i) => {
-              const classes = classNames("ic-seat", {
-                [style.availabel]: i !== 3 && i !== 5,
-                [style.busy]: i === 3,
-                [style.selected]: i === 5,
-              });
-              const data = {
-                id: i,
-                num: i + 1,
-                status: i !== 3 ? "availabel" : "busy",
-              };
+              if (emptyCell.includes(i)) {
+                return <div />;
+              } else {
+                const classes = classNames("ic-seat", {
+                  [style.availabel]: seatId !== 3 && seatId !== 5,
+                  [style.busy]: seatId === 3,
+                  [style.selected]: seatId === 5,
+                });
+                const data = {
+                  id: seatId,
+                  num: seatId,
+                  status: seatId !== 3 ? "availabel" : "busy",
+                };
+                if (seatId === resetNum[resetIdx] || seatId === 9) {
+                  seatId = 1;
+                  resetIdx++;
+                } else {
+                  seatId++;
+                }
+                return (
+                  <Seat
+                    key={`${i}-${Date.now()}`}
+                    className={classes}
+                    data={data}
+                  />
+                );
+              }
 
-              const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
-              return emptyCell.includes(i) ? (
-                <div />
-              ) : (
-                <Seat
-                  key={`${i}-${Date.now()}`}
-                  className={classes}
-                  data={data}
-                />
-              );
             })}
         </div>
       </div>
