@@ -53,7 +53,7 @@ export const MoviePage = () => {
             <div className={style.sessionTimesList}>
               {renderSessionTimes(data.times)}
             </div>
-            <SeatsSelect/>
+            
           </div>
         </div>
       </div>

@@ -3,10 +3,12 @@ import style from "./SeatsSelect.module.scss";
 import { Seat } from "./components/Seat";
 
 export const SeatsSelect = () => {
+  const row = 7
+  const seats = 63
   let seatId = 1;
   let resetIdx = 0;
-  let resetNum = [4, 5, 6];
-  const emptyCell = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
+  let resetNum = [4, 6, 5];
+  const emptyCells = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
 
   return (
     <div className={style.seatsSelect}>
@@ -17,7 +19,7 @@ export const SeatsSelect = () => {
 
       <div className={style.place}>
         <div className={style.rows}>
-          {Array(7)
+          {Array(row)
             .fill(0)
             .map((item, i) => (
               <div key={`${i}-${Date.now()}`} className={style.row}>
@@ -26,10 +28,10 @@ export const SeatsSelect = () => {
             ))}
         </div>
         <div className={style.seats}>
-          {Array(63)
+          {Array(seats)
             .fill(0)
             .map((item, i) => {
-              if (emptyCell.includes(i)) {
+              if (emptyCells.includes(i)) {
                 return <div />;
               } else {
                 const classes = classNames("ic-seat", {
@@ -50,13 +52,12 @@ export const SeatsSelect = () => {
                 }
                 return (
                   <Seat
-                    key={`${i}-${Date.now()}`}
+                    key={`${seatId}-${Date.now()}`}
                     className={classes}
                     data={data}
                   />
                 );
               }
-
             })}
         </div>
       </div>
