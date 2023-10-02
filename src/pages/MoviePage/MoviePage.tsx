@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { Title } from "../../components/Title";
 import { useGetMovieByIdQuery } from "../../api";
 import { SessionTime } from "../../components/SessionTime";
-import { InfoTable, InfoTableData } from "../../components/InfoTable";
+import { InfoTable } from "../../components/InfoTable";
+import { helpers } from "./helpers";
 
 export const MoviePage = () => {
   const params = useParams();
@@ -14,33 +15,6 @@ export const MoviePage = () => {
     return times.map((time, i) => {
       return <SessionTime key={`${i}-${Date.now()}`} id={i} time={time} />;
     });
-  };
-
-  const renderInfo = (data: any) => {
-    const infoData: InfoTableData[] = [
-      {
-        label: "Премьера",
-        value: data.premier,
-      },
-      {
-        label: "В ролях",
-        value: data.actors.join(",  "),
-      },
-      {
-        label: "Длительность",
-        value: data.duration,
-      },
-      {
-        label: "Страна",
-        value: data.country,
-      },
-      {
-        label: "Год",
-        value: data.year,
-      },
-    ]
-
-    return <InfoTable data={infoData}/>
   };
   if (isLoading) return <Title center>Loading...</Title>;
   if (!data) return <Title center>Фильм не найден</Title>;
@@ -57,7 +31,7 @@ export const MoviePage = () => {
         </div>
         <div className={style.rightCol}>
           <div className={style.info}>
-            {renderInfo(data)}
+            <InfoTable data={helpers.getInfoData(data)} />
           </div>
           <div className={style.session}>
             <h3 className={style.subTitle}>Сеансы</h3>
