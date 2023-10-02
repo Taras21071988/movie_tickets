@@ -1,21 +1,18 @@
 import style from "./InfoTable.module.scss";
+import { InfoTableData } from "./types";
 
+interface InfoTableProps {
+  data: InfoTableData[];
+}
 
-export const InfoTable = (props: InfoTableProps) => {
-  return (
-    <div className={style.InfoTable}>
-      <div className={style.label}>Премьера</div>
-      <div className={style.value}>{data.premier}</div>
-      <div className={style.label}>В ролях</div>
-      <div className={style.value}>{data.actors.join(",  ")}</div>
-      <div className={style.label}>Длительность</div>
-      <div className={style.value}>{data.duration}</div>
-      <div className={style.label}>Страна</div>
-      <div className={style.value}>{data.country}</div>
-      <div className={style.label}>Год </div>
-      <div className={style.value}>{data.year}</div>
-      <div className={style.label}></div>
-      <div className={style.value}></div>
-    </div>
-  );
+export const InfoTable = ({ data }: InfoTableProps) => {
+  const renderItems = (data: InfoTableData[]) => {
+    return data.map(({ label, value }) => (
+      <>
+        <div className={style.label}>{label}</div>
+        <div className={style.value}>{value}</div>
+      </>
+    ));
+  };
+  return <div className={style.InfoTable}>{renderItems(data)}</div>;
 };
