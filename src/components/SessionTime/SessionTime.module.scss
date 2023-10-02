@@ -1,0 +1,9 @@
+.SessionTime{
+ color: var(--light);
+    background: var(--secondary);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    border-radius: 4px;
+    transition: filter 0.3s;
+}

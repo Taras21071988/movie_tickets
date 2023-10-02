@@ -1,23 +1,17 @@
-import classNames from "classnames";
 import { Header } from "../../components/Header";
 import style from "./MoviePage.module.scss";
 import { useParams } from "react-router-dom";
 import { Title } from "../../components/Title";
 import { useGetMovieByIdQuery } from "../../api";
-import { SeatsSelect } from "../../components/SeatsSelect";
+import { SessionTime } from "../../components/SessionTime";
 
 export const MoviePage = () => {
   const params = useParams();
   const { data, isLoading } = useGetMovieByIdQuery(params.id!);
 
   const renderSessionTimes = (times: string[]) => {
-    return times.map((time, index) => {
-      const classes = classNames(style.sessionTimeItem, "hover");
-      return (
-        <div key={index} className={classes}>
-          {time}
-        </div>
-      );
+    return times.map((time, i) => {
+      return <SessionTime key={`${i}-${Date.now()}`} id={i} time={time} />;
     });
   };
   if (isLoading) return <Title center>Loading...</Title>;
@@ -53,7 +47,6 @@ export const MoviePage = () => {
             <div className={style.sessionTimesList}>
               {renderSessionTimes(data.times)}
             </div>
-            
           </div>
         </div>
       </div>
