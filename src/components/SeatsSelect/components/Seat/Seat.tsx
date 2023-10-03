@@ -7,28 +7,28 @@ import { addSeat, deleteSeat } from "../../../../slices";
 interface SeatProps {
   className: string;
   data: {
-    id: number
-    num: number
-    status: string //"available" | "busy" | "selected";
+    row: number;
+    seat: number;
+    status: string; //"available" | "busy" | "selected";
   };
 }
 
 export const Seat = ({ data }: SeatProps) => {
-  const { id, status: initStatus, num } = data;
+  const { status: initStatus, seat, row } = data;
   const [status, setStatus] = useState(initStatus);
   const classes = classNames(style.seat, style[status]);
   const dispatch = useDispatch();
 
   const onClick = () => {
     if (initStatus !== "busy") {
-      const isSelected = status === "available";
-      const newStatus = isSelected ? "selected" : "available";
+      const isSelected = status === "availabel";
+      const newStatus = isSelected ? "selected" : "availabel";
       setStatus(newStatus);
 
       if (isSelected) {
-        dispatch(addSeat(id + 1));
+        dispatch(addSeat({row,seat}));
       } else {
-        dispatch(deleteSeat(id + 1));
+        dispatch(deleteSeat({row,seat}));
       }
     }
   };
@@ -36,7 +36,7 @@ export const Seat = ({ data }: SeatProps) => {
   return (
     <div className={classes} onClick={onClick}>
       <i className="ic-seat" />
-      <span className={style.seatNum}>{num}</span>
+      <span className={style.seatNum}>{seat}</span>
     </div>
   );
 };

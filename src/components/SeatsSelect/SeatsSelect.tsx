@@ -3,10 +3,10 @@ import style from "./SeatsSelect.module.scss";
 import { Seat } from "./components/Seat";
 
 export const SeatsSelect = () => {
-  const row = 7
-  const seats = 63
-  let seatId = 1;
-  let resetIdx = 0;
+  const rows = 7;
+  const seats = 63;
+  let seat = 1;
+  let row = 1;
   let resetNum = [4, 6, 5];
   const emptyCells = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
 
@@ -19,7 +19,7 @@ export const SeatsSelect = () => {
 
       <div className={style.place}>
         <div className={style.rows}>
-          {Array(row)
+          {Array(rows)
             .fill(0)
             .map((item, i) => (
               <div key={`${i}-${Date.now()}`} className={style.row}>
@@ -35,24 +35,26 @@ export const SeatsSelect = () => {
                 return <div />;
               } else {
                 const classes = classNames("ic-seat", {
-                  [style.availabel]: seatId !== 3 && seatId !== 5,
-                  [style.busy]: seatId === 3,
-                  [style.selected]: seatId === 5,
+                  [style.availabel]: seat !== 3 && seat !== 5,
+                  [style.busy]: seat === 3,
+                  [style.selected]: seat === 5,
                 });
                 const data = {
-                  id: seatId,
-                  num: seatId,
-                  status: seatId !== 3 ? "availabel" : "busy",
+                  id: seat,
+                  seat,
+                  row,
+                  status: seat !== 3 ? "availabel" : "busy",
                 };
-                if (seatId === resetNum[resetIdx] || seatId === 9) {
-                  seatId = 1;
-                  resetIdx++;
+                if (seat === resetNum[row - 1] || seat === 9) {
+                  seat = 1;
+                  row++;
+                  data.row = row;
                 } else {
-                  seatId++;
+                  seat++;
                 }
                 return (
                   <Seat
-                    key={`${seatId}-${Date.now()}`}
+                    key={`${seat}-${Date.now()}`}
                     className={classes}
                     data={data}
                   />
