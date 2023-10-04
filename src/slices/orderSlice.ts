@@ -17,8 +17,10 @@ const orderSlice = createSlice({
       state.seats.push(action.payload);
     },
     deleteSeat: (state, action: PayloadAction<Seat>) => {
-      let {row,seat} = action.payload;
-      let filteredSeat = state.seats.filter((data) => data.seat !== seat&&data.row!==row);
+      let { row, seat } = action.payload;
+      let filteredSeat = state.seats.filter(
+        (data) => data.seat !== seat || data.row !== row
+      );
       state.seats = filteredSeat;
     },
     clearOrder: (state) => {

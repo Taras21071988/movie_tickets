@@ -32,7 +32,7 @@ export const SeatsSelect = () => {
             .fill(0)
             .map((item, i) => {
               if (emptyCells.includes(i)) {
-                return <div />;
+                return <div key={`${i}-${Math.random()}`} />;
               } else {
                 const classes = classNames("ic-seat", {
                   [style.availabel]: seat !== 3 && seat !== 5,
@@ -54,7 +54,7 @@ export const SeatsSelect = () => {
                 }
                 return (
                   <Seat
-                    key={`${seat}-${Date.now()}`}
+                    key={`${row}-${seat}`}
                     className={classes}
                     data={data}
                   />
