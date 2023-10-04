@@ -1,6 +1,23 @@
-.TicketPage{
-    
+.TicketPage {
+  display: grid;
+  justify-content: center;
+  .header {
+    margin-bottom: calc(var(--margin) * 2);
+  }
 }
-.title{
-    margin-bottom: 30px;
+.content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--margin) * 4);
+  align-items: start;
+}
+.info {
+  display: grid;
+  gap: calc(var(--margin) * 2);
+}
+.title {
+  text-align: center;
+}
+.titleCenter {
+  text-align: center;
 }
