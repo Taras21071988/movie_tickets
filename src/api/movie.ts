@@ -6,7 +6,7 @@ const moviesApi = rtkApi.injectEndpoints({
     getAllMovies: build.query<Movie[], void>({
       query: () => "movies",
     }),
-    getMovieById: build.query<Movie, string>({
+    getMovieById: build.query<MovieWithSessions, string>({
       query: (id) => `movies?id_like=${id}&_embed=sessions`,
       transformResponse: (data: MovieWithSessions[]) => {
         return data[0];

@@ -6,14 +6,15 @@ import { useGetMovieByIdQuery } from "../../api";
 import { SessionTime } from "../../components/SessionTime";
 import { InfoTable } from "../../components/InfoTable";
 import { helpers } from "./helpers";
+import { Session } from "../../types";
 
 export const MoviePage = () => {
   const params = useParams();
   const { data, isLoading } = useGetMovieByIdQuery(params.id!);
 
-  const renderSessionTimes = (times: string[]) => {
-    return times.map((time, i) => {
-      return <SessionTime key={`${i}-${Date.now()}`} id={i} time={time} />;
+  const renderSessionTimes = (sessions: Session[]) => {
+    return sessions.map(({ time, id }) => {
+      return <SessionTime key={id} id={id} time={time} />;
     });
   };
   if (isLoading) return <Title center>Loading...</Title>;
