@@ -46,6 +46,7 @@ export const TicketPage = () => {
                 <h3 className={style.title}>Стоимость </h3>
                 <InfoTable data={getPriceInfo(seatsCount, price)} />
                 <h3>Итого: {totalPrice} ₴</h3>
+                <div className={style.buyBtn}>Купить</div>
               </div>
             </>
           ) : (
@@ -56,4 +57,3 @@ export const TicketPage = () => {
     </div>
   );
 };
-// {?`Стоимость:${order.seats.length * price} ₴`: null}

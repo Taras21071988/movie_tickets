@@ -21,3 +21,11 @@
 .titleCenter {
   text-align: center;
 }
+.buyBtn {
+  cursor: pointer;
+  background-color: var(--accent);
+  color: var(--light);
+  padding: 12px 24px;
+  border-radius: 5px;
+text-align: center;
+}
