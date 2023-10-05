@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Header } from "../../components/Header";
-import { InfoTable, InfoTableData } from "../../components/InfoTable";
+import { InfoTable} from "../../components/InfoTable";
 import { SeatsSelect } from "../../components/SeatsSelect";
 import style from "./TicketPage.module.scss";
 import { RootState } from "../../store";
