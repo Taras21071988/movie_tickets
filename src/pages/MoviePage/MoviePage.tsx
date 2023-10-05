@@ -36,7 +36,7 @@ export const MoviePage = () => {
           <div className={style.session}>
             <h3 className={style.subTitle}>Сеансы</h3>
             <div className={style.sessionTimesList}>
-              {renderSessionTimes(data.times)}
+              {renderSessionTimes(data.sessions)}
             </div>
           </div>
         </div>

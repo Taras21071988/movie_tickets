@@ -1,4 +1,4 @@
-import { Movie } from "../types";
+import { Movie, MovieWithSessions } from "../types";
 import { rtkApi } from "./rtkApi";
 
 const moviesApi = rtkApi.injectEndpoints({
@@ -7,8 +7,8 @@ const moviesApi = rtkApi.injectEndpoints({
       query: () => "movies",
     }),
     getMovieById: build.query<Movie, string>({
-      query: (id) => `movies?id_like=${id}`,
-      transformResponse: (data: Movie[]) => {
+      query: (id) => `movies?id_like=${id}&_embed=sessions`,
+      transformResponse: (data: MovieWithSessions[]) => {
         return data[0];
       },
     }),
