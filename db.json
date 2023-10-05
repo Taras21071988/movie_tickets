@@ -81,5 +81,21 @@
       "time": "18:30",
       "movieId": 1
     }
+  ],
+  "seats": [
+    {
+      "id": 1,
+      "sessionId":1,
+      "buy_seats": [
+        {
+          "row": 2,
+          "seat": 3
+        },
+        {
+          "row": 2,
+          "seat": 5
+        }
+      ]
+    }
   ]
 }
