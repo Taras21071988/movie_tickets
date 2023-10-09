@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import { Header } from "../../components/Header";
 import { InfoTable} from "../../components/InfoTable";
 import { SeatsSelect } from "../../components/SeatsSelect";
-import style from "./TicketPage.module.scss";
+import style from "./SessionPage.module.scss";
 import { RootState } from "../../store";
 import { OrderState } from "../../slices";
 
-export const TicketPage = () => {
+export const SessionPage = () => {
   const { order } = useSelector((state: RootState) => state);
   const seatsCount = order.seats.length;
   const price = 100;

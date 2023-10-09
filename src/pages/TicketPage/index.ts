@@ -1,2 +1,0 @@
-export { TicketPage } from "./TicketPage";
-
