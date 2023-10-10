@@ -1,12 +1,15 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Header } from "../../components/Header";
 import { InfoTable } from "../../components/InfoTable";
 import { SeatsSelect } from "../../components/SeatsSelect";
 import style from "./SessionPage.module.scss";
 import { RootState } from "../../store";
-import { OrderState } from "../../slices";
+import { OrderState, clearOrder } from "../../slices";
+import { useParams } from "react-router-dom";
 
 export const SessionPage = () => {
+  const params = useParams();
+  const dispatch = useDispatch();
   const { order } = useSelector((state: RootState) => state);
   const seatsCount = order.seats.length;
   const price = 100;
@@ -31,6 +34,11 @@ export const SessionPage = () => {
       },
     ];
   };
+   
+  const onClick = ()=>{
+    
+    dispatch(clearOrder())
+  }
 
   return (
     <div className={style.TicketPage}>
@@ -46,7 +54,7 @@ export const SessionPage = () => {
                 <h3 className={style.title}>Стоимость </h3>
                 <InfoTable data={getPriceInfo(seatsCount, price)} />
                 <h3>Итого: {totalPrice} ₴</h3>
-                <div className={style.buyBtn}>Купить</div>
+                <div className={style.buyBtn} onClick={onClick}>Купить</div>
               </div>
             </>
           ) : (

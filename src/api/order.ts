@@ -1,0 +1,13 @@
+import { Session } from "../types";
+import { rtkApi } from "./rtkApi";
+
+const sessionApi = rtkApi.injectEndpoints({
+  endpoints: (build) => ({
+    getSessionById: build.mutation<Session, string>({
+      query: (id) => `sessions/${id}?_expand=seat`,
+    }),
+  }),
+  overrideExisting: false,
+});
+
+export const { useGetSessionByIdQuery } = sessionApi;

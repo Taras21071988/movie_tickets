@@ -90,6 +90,7 @@
   "seats": [
     {
       "id": 1,
+      "sessionId":1,
       "buy_seats": [
         {
           "row": 2,
