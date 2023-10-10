@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { addSeat, deleteSeat } from "../../../../slices";
 
 interface SeatProps {
-  // className: string;
   data: {
     row: number;
     seat: number;
@@ -26,9 +25,9 @@ export const Seat = ({ data }: SeatProps) => {
       setStatus(newStatus);
 
       if (isSelected) {
-        dispatch(addSeat({row,seat}));
+        dispatch(addSeat({ row, seat }));
       } else {
-        dispatch(deleteSeat({row,seat}));
+        dispatch(deleteSeat({ row, seat }));
       }
     }
   };
