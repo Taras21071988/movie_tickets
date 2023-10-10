@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { addSeat, deleteSeat } from "../../../../slices";
 
 interface SeatProps {
-  className: string;
+  // className: string;
   data: {
     row: number;
     seat: number;
