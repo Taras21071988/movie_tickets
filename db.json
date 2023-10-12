@@ -58,25 +58,25 @@
   "sessions": [
     {
       "id": 1,
-      "time": "10:00",
+      "time": "9:00",
       "movieId": 1,
       "seatId": 1
     },
     {
       "id": 2,
-      "time": "10:00",
-      "movieId": 2,
+      "time": "10:30",
+      "movieId": 1,
       "seatId": 2
     },
     {
       "id": 3,
-      "time": "11:30",
+      "time": "12:30",
       "movieId": 1,
       "seatId": 3
     },
     {
       "id": 4,
-      "time": "13:00",
+      "time": "15:00",
       "movieId": 1,
       "seatId": 4
     },
@@ -90,29 +90,23 @@
   "seats": [
     {
       "id": 1,
-      "sessionId":1,
-      "buy_seats": [
-        {
-          "row": 2,
-          "seat": 3
-        },
-        {
-          "row": 2,
-          "seat": 5
-        },
-        {
-          "row": 3,
-          "seat": 5
-        },
-        {
-          "row": 1,
-          "seat": 4
-        },
-        {
-          "row": 2,
-          "seat": 1
-        }
-      ]
+      "buy_seats": []
+    },
+    {
+      "id": 2,
+      "buy_seats": []
+    },
+    {
+      "id": 3,
+      "buy_seats": []
+    },
+    {
+      "id": 4,
+      "buy_seats": []
+    },
+    {
+      "id": 5,
+      "buy_seats": []
     }
   ]
 }
