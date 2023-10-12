@@ -6,9 +6,12 @@ import style from "./SessionPage.module.scss";
 import { RootState } from "../../store";
 import { OrderState, clearOrder } from "../../slices";
 import { useParams } from "react-router-dom";
+import { useGetSessionByIdQuery } from "../../api";
+import { Title } from "../../components/Title";
 
 export const SessionPage = () => {
   const params = useParams();
+  const { isLoading, data } = useGetSessionByIdQuery(params.id!);
   const dispatch = useDispatch();
   const { order } = useSelector((state: RootState) => state);
   const seatsCount = order.seats.length;
@@ -22,6 +25,7 @@ export const SessionPage = () => {
     }));
   };
 
+  if (isLoading) return <Title center>Загрузка свободных мест</Title>;
   const getPriceInfo = (count: number, price: number) => {
     return [
       {

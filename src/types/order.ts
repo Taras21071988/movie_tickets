@@ -1,6 +1,6 @@
 import { Seat } from "./seat";
 
-export interface Order {
+export interface OrderData {
   sessionId: number;
   buy_seats: Seat[];
 }

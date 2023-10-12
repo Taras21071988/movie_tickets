@@ -1,14 +1,10 @@
 import classNames from "classnames";
 import style from "./SeatsSelect.module.scss";
 import { Seat } from "./components/Seat";
-import { useParams } from "react-router-dom";
-import { useGetSessionByIdQuery } from "../../api";
-import { Title } from "../Title";
 import { Seat as ISeat } from "../../types";
 
 export const SeatsSelect = () => {
-  const params = useParams();
-  const { isLoading, data } = useGetSessionByIdQuery(params.id!);
+
 
   const rows = 7;
   const seats = 63;
@@ -27,7 +23,7 @@ export const SeatsSelect = () => {
     );
   };
 
-  if (isLoading) return <Title center>Загрузка свободных мест</Title>;
+  
 
   return (
     <div className={style.seatsSelect}>
