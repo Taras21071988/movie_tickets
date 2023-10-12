@@ -12,6 +12,7 @@ import { Title } from "../../components/Title";
 export const SessionPage = () => {
   const params = useParams();
   const { isLoading, data } = useGetSessionByIdQuery(params.id!);
+
   const dispatch = useDispatch();
   const { order } = useSelector((state: RootState) => state);
   const seatsCount = order.seats.length;
@@ -38,17 +39,16 @@ export const SessionPage = () => {
       },
     ];
   };
-   
-  const onClick = ()=>{
-    
-    dispatch(clearOrder())
-  }
+
+  const onClick = () => {
+    dispatch(clearOrder());
+  };
 
   return (
     <div className={style.TicketPage}>
       <Header title="Название фильма" className={style.header} />
       <div className={style.content}>
-        <SeatsSelect />
+        <SeatsSelect buySeats={data?.seat?.buy_seats} />
         <div className={style.info}>
           {seatsCount > 0 ? (
             <>
@@ -58,7 +58,9 @@ export const SessionPage = () => {
                 <h3 className={style.title}>Стоимость </h3>
                 <InfoTable data={getPriceInfo(seatsCount, price)} />
                 <h3>Итого: {totalPrice} ₴</h3>
-                <div className={style.buyBtn} onClick={onClick}>Купить</div>
+                <div className={style.buyBtn} onClick={onClick}>
+                  Купить
+                </div>
               </div>
             </>
           ) : (

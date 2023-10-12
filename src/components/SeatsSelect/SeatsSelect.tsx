@@ -2,10 +2,15 @@ import classNames from "classnames";
 import style from "./SeatsSelect.module.scss";
 import { Seat } from "./components/Seat";
 import { Seat as ISeat } from "../../types";
+import { type } from "os";
 
-export const SeatsSelect = () => {
+type BuySeats = ISeat[] | undefined;
 
+interface SeatsSelectProps {
+  buySeats: BuySeats;
+}
 
+export const SeatsSelect = ({ buySeats }: SeatsSelectProps) => {
   const rows = 7;
   const seats = 63;
   let seat = 1;
@@ -13,17 +18,11 @@ export const SeatsSelect = () => {
   let resetNum = [4, 6, 5];
   const emptyCells = [2, 3, 4, 5, 6, 12, 13, 14, 18, 19, 25, 26];
 
-  const isBusySeat = (
-    row: number,
-    seat: number,
-    buySeats: ISeat[] | undefined
-  ) => {
+  const isBusySeat = (row: number, seat: number, buySeats: BuySeats) => {
     return buySeats?.some(
       (buySeat) => buySeat.row === row && buySeat.seat === seat
     );
   };
-
-  
 
   return (
     <div className={style.seatsSelect}>
@@ -53,9 +52,9 @@ export const SeatsSelect = () => {
                   id: seat,
                   seat,
                   row,
-                  status: isBusySeat(row, seat, data?.seat?.buy_seats)
+                  status: isBusySeat(row, seat, buySeats)
                     ? "busy"
-                    :"availabel" ,
+                    : "availabel",
                 };
                 if (seat === resetNum[row - 1] || seat === 9) {
                   seat = 1;
