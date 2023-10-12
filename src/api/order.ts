@@ -10,4 +10,4 @@ const sessionApi = rtkApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useGetSessionByIdQuery } = sessionApi;
+export const { useGetSessionByIdMutation } = sessionApi;
