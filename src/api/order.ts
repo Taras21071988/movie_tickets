@@ -1,9 +1,9 @@
 import { OrderData } from "../types";
 import { rtkApi } from "./rtkApi";
 
-const sessionApi = rtkApi.injectEndpoints({
+const orderApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
-    updateBySeatsById: build.mutation<OrderData, OrderData>({
+    updateSeatsById: build.mutation<OrderData, OrderData>({
       query: ({ id, buy_seats }) => ({
         method: "PUT",
         url: `seats/${id}`,
@@ -16,4 +16,4 @@ const sessionApi = rtkApi.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useUpdateBySeatsByIdMutation } = sessionApi;
+export const { useUpdateSeatsByIdMutation } = orderApi;
