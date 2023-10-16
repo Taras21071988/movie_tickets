@@ -8,11 +8,16 @@ import { OrderState, clearOrder } from "../../slices";
 import { useParams } from "react-router-dom";
 import { useGetSessionByIdQuery } from "../../api";
 import { Title } from "../../components/Title";
+import { useUpdateSeatsByIdMutation } from "../../api/order";
+import { OrderData } from "../../types";
+import { useEffect, useState } from "react";
+import classNames from "classnames";
 
 export const SessionPage = () => {
+  const [isDisabled, setIsDisabled] = useState(false);
   const params = useParams();
   const { isLoading, data } = useGetSessionByIdQuery(params.id!);
-
+  const [buyTicket, { isSuccess }] = useUpdateSeatsByIdMutation();
   const dispatch = useDispatch();
   const { order } = useSelector((state: RootState) => state);
   const seatsCount = order.seats.length;
@@ -25,6 +30,12 @@ export const SessionPage = () => {
       value: `Ряд ${row}  Место${seat} `,
     }));
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clearOrder());
+    }
+  }, [isSuccess]);
 
   if (isLoading) return <Title center>Загрузка свободных мест</Title>;
   const getPriceInfo = (count: number, price: number) => {
@@ -41,7 +52,13 @@ export const SessionPage = () => {
   };
 
   const onClick = () => {
-    dispatch(clearOrder());
+    const buySeats = data?.seat?.buy_seats || [];
+    const orderData: OrderData = {
+      id: data?.seatId!,
+      buy_seats: [...buySeats, ...order.seats],
+    };
+    buyTicket(orderData);
+    setIsDisabled(true);
   };
 
   return (
@@ -58,7 +75,12 @@ export const SessionPage = () => {
                 <h3 className={style.title}>Стоимость </h3>
                 <InfoTable data={getPriceInfo(seatsCount, price)} />
                 <h3>Итого: {totalPrice} ₴</h3>
-                <div className={style.buyBtn} onClick={onClick}>
+                <div
+                  className={classNames(style.buyBtn, {
+                    [style.disable]: isDisabled,
+                  })}
+                  onClick={onClick}
+                >
                   Купить
                 </div>
               </div>
