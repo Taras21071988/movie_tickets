@@ -14,7 +14,7 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/movie/:id" element={<MoviePage />} />
-            <Route path="/session/:id" element={<SessionPage/>}/>
+            <Route path="/movie/:movieId/session/:sessionId" element={<SessionPage/>}/>
           </Routes>
 
         </BrowserRouter>

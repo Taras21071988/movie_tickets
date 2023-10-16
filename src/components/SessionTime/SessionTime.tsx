@@ -5,10 +5,14 @@ import classNames from "classnames";
 interface SessionTimeProps {
   id: number;
   time: string;
+  movieId: number;
 }
 
-export const SessionTime = ({ id, time }: SessionTimeProps) => (
-  <Link to={`/session/${id}`} className={classNames(style.SessionTime, "hover")}>
+export const SessionTime = ({ id, time, movieId }: SessionTimeProps) => (
+  <Link
+    to={`/movie/${movieId}/session/${id}`}
+    className={classNames(style.SessionTime, "hover")}
+  >
     {time}
   </Link>
 );

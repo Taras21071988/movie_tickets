@@ -13,8 +13,9 @@ export const MoviePage = () => {
   const { data, isLoading } = useGetMovieByIdQuery(params.id!);
 
   const renderSessionTimes = (sessions: Session[]) => {
+    if (!data) return null;
     return sessions.map(({ time, id }) => {
-      return <SessionTime key={id} id={id} time={time} />;
+      return <SessionTime key={id} id={id} movieId={data.id} time={time} />;
     });
   };
   if (isLoading) return <Title center>Loading...</Title>;
