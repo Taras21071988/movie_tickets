@@ -3,14 +3,17 @@ import { rtkApi } from "./rtkApi";
 
 const sessionApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
-    getSessionById: build.mutation<OrderData, OrderData>({
-      query: (BuySeats) => ({
-        url:   `seats/${id}?_expand=seat`,
-        method:"PUT",
+    updateBySeatsById: build.mutation<OrderData, OrderData>({
+      query: ({ id, buy_seats }) => ({
+        method: "PUT",
+        url: `seats/${id}`,
+        body:{
+          buy_seats
+        }
       }),
     }),
   }),
   overrideExisting: false,
 });
 
-export const { useGetSessionByIdMutation } = sessionApi;
+export const { useUpdateBySeatsByIdMutation } = sessionApi;

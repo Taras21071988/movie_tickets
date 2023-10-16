@@ -1,6 +1,6 @@
 import { Seat } from "./seat";
 
 export interface OrderData {
-  seatId: number;
+  id: number;
   buy_seats: Seat[];
 }
