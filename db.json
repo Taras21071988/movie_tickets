@@ -85,6 +85,12 @@
       "time": "18:30",
       "movieId": 1,
       "seatId": 5
+    },
+    {
+      "id": 6,
+      "time": "18:30",
+      "movieId": 2,
+      "seatId": 6
     }
   ],
   "seats": [
@@ -106,6 +112,10 @@
     },
     {
       "id": 5,
+      "buy_seats": []
+    },
+    {
+      "id": 6,
       "buy_seats": []
     }
   ]
