@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Header } from "../../components/Header";
 import { InfoTable } from "../../components/InfoTable";
 import { SeatsSelect } from "../../components/SeatsSelect";
 import style from "./SessionPage.module.scss";
 import { RootState } from "../../store";
-import { OrderState, clearOrder } from "../../slices";
+import { OrderState } from "../../slices";
 import { useParams } from "react-router-dom";
 import { useGetSessionByIdQuery } from "../../api";
 import { Title } from "../../components/Title";
@@ -18,7 +18,6 @@ export const SessionPage = () => {
   const params = useParams();
   const { isLoading, data } = useGetSessionByIdQuery(params.id!);
   const [buyTicket, { isSuccess }] = useUpdateSeatsByIdMutation();
-  const dispatch = useDispatch();
   const { order } = useSelector((state: RootState) => state);
   const seatsCount = order.seats.length;
   const price = 100;
@@ -33,7 +32,7 @@ export const SessionPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(clearOrder());
+      //генерируем QR Code
     }
   }, [isSuccess]);
 
