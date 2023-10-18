@@ -77,14 +77,15 @@ export const SessionPage = () => {
 
   return (
     <div className={style.TicketPage}>
-      <Header title="Название фильма" className={style.header} />
+      <Header title={movieData?.title!} className={style.header} />
+
       <div className={style.content}>
         <SeatsSelect buySeats={sessionData?.seat?.buy_seats} />
+
         <div className={style.info}>
-          <h3 className={style.title}>{movieData?.title}</h3>
-          <InfoTable data={getSessionInfo(sessionData.time)} />
-        </div>
-        <div className={style.info}>
+          <div className={style.info}>
+            <InfoTable data={getSessionInfo(sessionData.time)} />
+          </div>
           {seatsCount > 0 ? (
             <>
               <h3 className={style.title}>Выбранные места</h3>
