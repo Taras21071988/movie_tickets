@@ -52,9 +52,9 @@ export const SessionPage = () => {
   };
 
   const onClick = () => {
-    const buySeats = data?.seat?.buy_seats || [];
+    const buySeats = sessionData?.seat?.buy_seats || [];
     const orderData: OrderData = {
-      id: data?.seatId!,
+      id: sessionData?.seatId!,
       buy_seats: [...buySeats, ...order.seats],
     };
     buyTicket(orderData);
@@ -65,7 +65,7 @@ export const SessionPage = () => {
     <div className={style.TicketPage}>
       <Header title="Название фильма" className={style.header} />
       <div className={style.content}>
-        <SeatsSelect buySeats={data?.seat?.buy_seats} />
+        <SeatsSelect buySeats={sessionData?.seat?.buy_seats} />
         <div className={style.info}>
           {seatsCount > 0 ? (
             <>
