@@ -116,67 +116,35 @@
     {
       "buy_seats": [
         {
-          "row": 1,
-          "seat": 3
-        },
-        {
-          "row": 7,
-          "seat": 9
-        },
-        {
-          "row": 5,
-          "seat": 9
-        },
-        {
           "row": 2,
           "seat": 4
-        },
-        {
-          "row": 6,
-          "seat": 4
-        },
-        {
-          "row": 6,
-          "seat": 6
-        },
-        {
-          "row": 5,
-          "seat": 1
-        },
-        {
-          "row": 6,
-          "seat": 7
-        },
-        {
-          "row": 4,
-          "seat": 7
-        },
-        {
-          "row": 7,
-          "seat": 9
         },
         {
           "row": 3,
           "seat": 6
         },
         {
-          "row": 2,
+          "row": 4,
           "seat": 5
         },
         {
           "row": 4,
-          "seat": 8
+          "seat": 5
         },
         {
-          "row": 3,
-          "seat": 6
+          "row": 5,
+          "seat": 4
+        },
+        {
+          "row": 6,
+          "seat": 3
         },
         {
           "row": 5,
           "seat": 9
         },
         {
-          "row": 5,
+          "row": 6,
           "seat": 9
         },
         {
@@ -184,20 +152,8 @@
           "seat": 9
         },
         {
-          "row": 5,
+          "row": 8,
           "seat": 9
-        },
-        {
-          "row": 3,
-          "seat": 6
-        },
-        {
-          "row": 1,
-          "seat": 1
-        },
-        {
-          "row": 5,
-          "seat": 8
         }
       ],
       "id": 1
@@ -208,64 +164,7 @@
     },
     {
       "id": 3,
-      "buy_seats": [
-        {
-          "row": 3,
-          "seat": 6
-        },
-        {
-          "row": 2,
-          "seat": 5
-        },
-        {
-          "row": 4,
-          "seat": 8
-        },
-        {
-          "row": 5,
-          "seat": 9
-        },
-        {
-          "row": 7,
-          "seat": 9
-        },
-        {
-          "row": 6,
-          "seat": 8
-        },
-        {
-          "row": 5,
-          "seat": 8
-        },
-        {
-          "row": 6,
-          "seat": 9
-        },
-        {
-          "row": 1,
-          "seat": 3
-        },
-        {
-          "row": 2,
-          "seat": 4
-        },
-        {
-          "row": 7,
-          "seat": 8
-        },
-        {
-          "row": 8,
-          "seat": 9
-        },
-        {
-          "row": 7,
-          "seat": 1
-        },
-        {
-          "row": 4,
-          "seat": 6
-        }
-      ]
+      "buy_seats": []
     },
     {
       "id": 4,
@@ -277,12 +176,7 @@
     },
     {
       "id": 6,
-      "buy_seats": [
-        {
-          "row": 2,
-          "seat": 2
-        }
-      ]
+      "buy_seats": []
     }
   ]
 }
