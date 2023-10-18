@@ -37,13 +37,15 @@ export const SessionPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      const dataForQrCode = JSON.stringify({
-        movie: movieData?.title,
-        time: sessionData?.time,
-        sessionId: sessionData?.id,
-        seats: order.seats,
-        total_price:totalPrice
-      });
+      const dataForQrCode = encodeURI (
+        JSON.stringify({
+          movie: movieData?.title,
+          time: sessionData?.time,
+          sessionId: sessionData?.id,
+          seats: order.seats,
+          total_price: totalPrice,
+        })
+      );
       setQrCode(
         `https://api.qrserver.com/v1/create-qr-code/?size=200*200&data=${dataForQrCode} `
       );
