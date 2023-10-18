@@ -10,16 +10,17 @@ import { useGetMovieByIdQuery, useGetSessionByIdQuery } from "../../api";
 import { Title } from "../../components/Title";
 import { useUpdateSeatsByIdMutation } from "../../api/order";
 import { OrderData } from "../../types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import classNames from "classnames";
-import { time } from "console";
 
 export const SessionPage = () => {
+  const imgRef = useRef<HTMLImageElement>(null);
   const [isDisabled, setIsDisabled] = useState(false);
   const params = useParams();
   const { isLoading, data: sessionData } = useGetSessionByIdQuery(
     params.sessionId!
   );
+  const [qrCode, setQrCode] = useState("");
   const { data: movieData } = useGetMovieByIdQuery(params.movieId!);
   const [buyTicket, { isSuccess }] = useUpdateSeatsByIdMutation();
   const { order } = useSelector((state: RootState) => state);
@@ -36,9 +37,19 @@ export const SessionPage = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      //генерируем QR Code
+      setQrCode(
+        "https://api.qrserver.com/v1/create-qr-code/?size=200*200&data=tonysnow.ru "
+      );
     }
   }, [isSuccess]);
+  useEffect(() => {
+    if (qrCode) {
+      //генерируем QR Code
+      if (imgRef.current) {
+        imgRef.current.src = qrCode;
+      }
+    }
+  }, [qrCode]);
 
   if (isLoading) return <Title center>Загрузка свободных мест</Title>;
 
@@ -94,18 +105,25 @@ export const SessionPage = () => {
                 <h3 className={style.title}>Стоимость </h3>
                 <InfoTable data={getPriceInfo(seatsCount, price)} />
                 <h3>Итого: {totalPrice} ₴</h3>
-                <div
-                  className={classNames(style.buyBtn, {
-                    [style.disable]: isDisabled,
-                  })}
-                  onClick={onClick}
-                >
-                  Купить
-                </div>
+                {!qrCode && (
+                  <div
+                    className={classNames(style.buyBtn, {
+                      [style.disable]: isDisabled,
+                    })}
+                    onClick={onClick}
+                  >
+                    Купить
+                  </div>
+                )}
               </div>
             </>
           ) : (
             <h3 className={style.titleCenter}> Выберите места</h3>
+          )}
+          {!!qrCode && (
+            <div className={style.qr}>
+              <img ref={imgRef} src="" alt="QrCode" />
+            </div>
           )}
         </div>
       </div>
