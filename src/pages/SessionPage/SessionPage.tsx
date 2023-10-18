@@ -12,6 +12,7 @@ import { useUpdateSeatsByIdMutation } from "../../api/order";
 import { OrderData } from "../../types";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
+import { time } from "console";
 
 export const SessionPage = () => {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -40,12 +41,9 @@ export const SessionPage = () => {
   }, [isSuccess]);
 
   if (isLoading) return <Title center>Загрузка свободных мест</Title>;
-  const getPriceInfo = (count: number, price: number, time: string) => {
+
+  const getPriceInfo = (count: number, price: number) => {
     return [
-      {
-        label: "Начало в",
-        value: time,
-      },
       {
         label: "Колличество мест",
         value: count,
@@ -53,6 +51,14 @@ export const SessionPage = () => {
       {
         label: "Стоимость билета",
         value: `${price}   ₴`,
+      },
+    ];
+  };
+  const getSessionInfo = (time: string) => {
+    return [
+      {
+        label: "Начало в",
+        value: time,
       },
     ];
   };
@@ -75,15 +81,17 @@ export const SessionPage = () => {
       <div className={style.content}>
         <SeatsSelect buySeats={sessionData?.seat?.buy_seats} />
         <div className={style.info}>
+          <h3 className={style.title}>{movieData?.title}</h3>
+          <InfoTable data={getSessionInfo(sessionData.time)} />
+        </div>
+        <div className={style.info}>
           {seatsCount > 0 ? (
             <>
               <h3 className={style.title}>Выбранные места</h3>
               <InfoTable data={getOrderInfo(order)} />
               <div className={style.info}>
                 <h3 className={style.title}>Стоимость </h3>
-                <InfoTable
-                  data={getPriceInfo(seatsCount, price, sessionData?.time)}
-                />
+                <InfoTable data={getPriceInfo(seatsCount, price)} />
                 <h3>Итого: {totalPrice} ₴</h3>
                 <div
                   className={classNames(style.buyBtn, {
