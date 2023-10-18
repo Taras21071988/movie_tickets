@@ -16,7 +16,9 @@ import classNames from "classnames";
 export const SessionPage = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const params = useParams();
-  const { isLoading, data: sessionData } = useGetSessionByIdQuery(params.sessionId!);
+  const { isLoading, data: sessionData } = useGetSessionByIdQuery(
+    params.sessionId!
+  );
   const { data: movieData } = useGetMovieByIdQuery(params.movieId!);
   const [buyTicket, { isSuccess }] = useUpdateSeatsByIdMutation();
   const { order } = useSelector((state: RootState) => state);
@@ -38,8 +40,12 @@ export const SessionPage = () => {
   }, [isSuccess]);
 
   if (isLoading) return <Title center>Загрузка свободных мест</Title>;
-  const getPriceInfo = (count: number, price: number) => {
+  const getPriceInfo = (count: number, price: number, time: string) => {
     return [
+      {
+        label: "Начало в",
+        value: time,
+      },
       {
         label: "Колличество мест",
         value: count,
@@ -61,6 +67,8 @@ export const SessionPage = () => {
     setIsDisabled(true);
   };
 
+  if (!sessionData) return null;
+
   return (
     <div className={style.TicketPage}>
       <Header title="Название фильма" className={style.header} />
@@ -73,7 +81,9 @@ export const SessionPage = () => {
               <InfoTable data={getOrderInfo(order)} />
               <div className={style.info}>
                 <h3 className={style.title}>Стоимость </h3>
-                <InfoTable data={getPriceInfo(seatsCount, price)} />
+                <InfoTable
+                  data={getPriceInfo(seatsCount, price, sessionData?.time)}
+                />
                 <h3>Итого: {totalPrice} ₴</h3>
                 <div
                   className={classNames(style.buyBtn, {
