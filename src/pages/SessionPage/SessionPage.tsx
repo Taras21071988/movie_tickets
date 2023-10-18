@@ -16,7 +16,7 @@ import classNames from "classnames";
 export const SessionPage = () => {
   const [isDisabled, setIsDisabled] = useState(false);
   const params = useParams();
-  const { isLoading, data } = useGetSessionByIdQuery(params.sessionId!);
+  const { isLoading, data: sessionData } = useGetSessionByIdQuery(params.sessionId!);
   const { data: movieData } = useGetMovieByIdQuery(params.movieId!);
   const [buyTicket, { isSuccess }] = useUpdateSeatsByIdMutation();
   const { order } = useSelector((state: RootState) => state);
